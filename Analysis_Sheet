@@ -29,51 +29,51 @@ df.select("mid").distinct().count()
 
 7. Highest Scoring Matches
 
-df.groupBy("mid")     .agg(sum("runs").alias("total_runs"))     .orderBy(desc("total_runs"))     .show(10)
+df.groupBy("mid").agg(sum("runs").alias("total_runs")).orderBy(desc("total_runs")).show(10)
 
 8. Lowest Scoring Matches
 
-df.groupBy("mid")     .agg(sum("runs").alias("total_runs"))     .orderBy("total_runs")     .show(10)
+df.groupBy("mid").agg(sum("runs").alias("total_runs")).orderBy("total_runs").show(10)
 
 9. Average Runs Per Match
 
-df.groupBy("mid")     .agg(sum("runs").alias("match_runs"))     .agg(avg("match_runs"))     .show()
+df.groupBy("mid").agg(sum("runs").alias("match_runs")).agg(avg("match_runs")).show()
 
 10. Team With Most Runs
 
-df.groupBy("bat_team")     .agg(sum("runs").alias("team_runs"))     .orderBy(desc("team_runs"))     .show()
+df.groupBy("bat_team").agg(sum("runs").alias("team_runs")).orderBy(desc("team_runs")).show()
 
 11. Team With Most Wickets
 
-df.groupBy("bowl_team")     .agg(sum("wickets").alias("team_wickets"))     .orderBy(desc("team_wickets"))     .show()
+df.groupBy("bowl_team").agg(sum("wickets").alias("team_wickets")).orderBy(desc("team_wickets")).show()
 
 12. Team vs Team Analysis
 
-df.groupBy("bat_team", "bowl_team")     .agg(sum("runs").alias("runs_scored"))     .show()
+df.groupBy("bat_team", "bowl_team").agg(sum("runs").alias("runs_scored")).show()
 
 13. Top Batsmen
 
-df.groupBy("batsman")     .agg(sum("runs").alias("career_runs"))     .orderBy(desc("career_runs"))     .show(10)
+df.groupBy("batsman").agg(sum("runs").alias("career_runs")).orderBy(desc("career_runs")).show(10)
 
 14. Most Consistent Batsmen
 
-df.groupBy("batsman")     .agg(stddev("runs").alias("consistency"))     .orderBy("consistency")     .show(10)
+df.groupBy("batsman").agg(stddev("runs").alias("consistency")).orderBy("consistency").show(10)
 
 15. Top Bowlers
 
-df.groupBy("bowler")     .agg(sum("wickets").alias("career_wickets"))     .orderBy(desc("career_wickets"))     .show(10)
+df.groupBy("bowler").agg(sum("wickets").alias("career_wickets")).orderBy(desc("career_wickets")).show(10)
 
 16. Bowling Efficiency
 
-df.groupBy("bowler")     .agg((sum("wickets") / sum("overs")).alias("efficiency"))     .orderBy(desc("efficiency"))     .show(10)
+df.groupBy("bowler").agg((sum("wickets") / sum("overs")).alias("efficiency")).orderBy(desc("efficiency")).show(10)
 
 17. Highest Scoring Venue
 
-df.groupBy("venue")     .agg(avg("runs").alias("avg_runs"))     .orderBy(desc("avg_runs"))     .show()
+df.groupBy("venue") .agg(avg("runs").alias("avg_runs")).orderBy(desc("avg_runs")).show()
 
 18. Venue With Most Wickets
 
-df.groupBy("venue")     .agg(sum("wickets").alias("total_wickets"))     .orderBy(desc("total_wickets"))     .show()
+df.groupBy("venue").agg(sum("wickets").alias("total_wickets")).orderBy(desc("total_wickets")).show()
 
 19. Running Total Using Window Function
 
@@ -86,7 +86,7 @@ df = df.withColumn(
 
 20. Rank Batsmen
 
-batsman_df = df.groupBy("batsman")     .agg(sum("runs").alias("career_runs"))
+batsman_df = df.groupBy("batsman").agg(sum("runs").alias("career_runs"))
 
 windowSpec = Window.orderBy(desc("career_runs"))
 
